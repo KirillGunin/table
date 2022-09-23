@@ -23,7 +23,6 @@ export default {
 <style>
 .table-item {
   display: flex;
-  /* justify-content: space-around; */
 }
 .item {
   flex-basis: 33%;
