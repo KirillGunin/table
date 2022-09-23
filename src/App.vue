@@ -1,32 +1,26 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-
-    <TodoHeaders />
-
-    <!-- все посты -->
-    <!-- <div class="todo-item" v-for="todo in allTodos" :key="todo.id">
-      <h2>{{todo.userId}}</h2>
-      <p>{{todo.title}}</p>
-      <p>{{todo.completed}}</p>
-    </div> -->
-    <TodoTable />
-
+    <Table :users_data="USERS"/>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import TodoHeaders from './components/TodoHeaders.vue'
-import TodoTable from './components/TodoTable.vue'
-
+import Table from './components/table/Table'
 export default {
   name: 'App',
-  components: { TodoHeaders, TodoTable },
-  computed: mapGetters(['allTodos']),
-  methods: mapActions(['fetchTodos']),
-  async mounted() {
-    this.fetchTodos()
+  components: {
+    Table
+},
+  computed: {
+    ...mapGetters(['USERS'])
+  },
+  methods: {
+    ...mapActions(['GET_USERS'])
+  },
+  mounted() {
+    this.GET_USERS()
   }
 }
 </script>

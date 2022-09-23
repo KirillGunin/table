@@ -1,10 +1,34 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import todo from './modules/todo'
+import axios from 'axios';
 
 Vue.use(Vuex);
-export default new Vuex.Store({
-  modules: {
-    todo
+
+const store = new Vuex.Store({
+
+  state: {
+    users: []
+  },
+  actions:{
+    GET_USERS({commit}) {
+      return axios('http://localhost:3000/users', {
+        method: 'GET'
+      })
+      .then((res) => {
+        commit('SET_USERS', res.data)
+      })
+    }
+  },
+  mutations:{
+    SET_USERS: (state, users) => {
+      state.users = users
+    }
+  },
+  getters: {
+    USERS(state) {
+      return state.users
+    }
   }
 })
+
+export default store;
