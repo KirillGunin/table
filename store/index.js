@@ -7,26 +7,26 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 
   state: {
-    usersLoaded: []
+    tracksLoaded: []
   },
   actions:{
-    getUsers({commit}) {
-      return axios('http://localhost:3000/users', {
+    getTracks({commit}) {
+      return axios('http://localhost:3000/tracks', {
         method: 'GET'
       })
       .then((res) => {
-        commit('setUsers', res.data)
+        commit('setTracks', res.data)
       })
     }
   },
   mutations:{
-    setUsers: (state, usersLoaded) => {
-      state.usersLoaded = usersLoaded
+    setTracks: (state, tracksLoaded) => {
+      state.tracksLoaded = tracksLoaded
     }
   },
   getters: {
-    users(state) {
-      return state.usersLoaded
+    tracks(state) {
+      return state.tracksLoaded
     }
   }
 })

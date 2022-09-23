@@ -54,7 +54,7 @@ import TableItem from './TableItem.vue';
     name: 'Table',
     components: { TableItem },
     props: {
-      users_data: {
+      tracks_data: {
         type: Array,
         default: () => {
           return []
@@ -63,18 +63,18 @@ import TableItem from './TableItem.vue';
     },
     data() {
       return {
-        usersPerPage: 4,
+        tracksPerPage: 4,
         pageNumber: 1
       }
     },
     computed: {
       pages() {
-        return Math.ceil(this.users_data.length / 4)
+        return Math.ceil(this.tracks_data.length / 4)
       },
       pagePagination() {
-        const firstPage = (this.pageNumber -1) * this.usersPerPage;
-        const lastPage = firstPage + this.usersPerPage
-        return this.users_data.slice(firstPage, lastPage)
+        const firstPage = (this.pageNumber -1) * this.tracksPerPage;
+        const lastPage = firstPage + this.tracksPerPage
+        return this.tracks_data.slice(firstPage, lastPage)
       }
     },
     methods: {
@@ -82,22 +82,22 @@ import TableItem from './TableItem.vue';
         this.pageNumber = page
       },
       sortByDateASC() {
-        this.users_data.sort((a,b) => a.date - b.date)
+        this.tracks_data.sort((a,b) => a.date - b.date)
       },
       sortByDateDESC() {
-        this.users_data.sort((a,b) => b.date - a.date)
+        this.tracks_data.sort((a,b) => b.date - a.date)
       },
       sortByDistanceASC() {
-        this.users_data.sort((a,b) => a.distance - b.distance)
+        this.tracks_data.sort((a,b) => a.distance - b.distance)
       },
       sortByDistanceDESC() {
-        this.users_data.sort((a,b) => b.distance - a.distance)
+        this.tracks_data.sort((a,b) => b.distance - a.distance)
       },
       sortByRecordASC() {
-        this.users_data.sort((a,b) => a.record - b.record)
+        this.tracks_data.sort((a,b) => a.record - b.record)
       },
       sortByRecordDESC() {
-        this.users_data.sort((a,b) => b.record - a.record)
+        this.tracks_data.sort((a,b) => b.record - a.record)
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <Table :users_data="users"/>
+    <Table :tracks_data="tracks"/>
   </div>
 </template>
 
@@ -14,13 +14,13 @@ export default {
     Table
 },
   computed: {
-    ...mapGetters(['users'])
+    ...mapGetters(['tracks'])
   },
   methods: {
-    ...mapActions(['getUsers'])
+    ...mapActions(['getTracks'])
   },
   mounted() {
-    this.getUsers()
+    this.getTracks()
   }
 }
 </script>
